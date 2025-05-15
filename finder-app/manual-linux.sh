@@ -76,6 +76,7 @@ else
 fi
 
 # TODO: Make and install busybox
+cd "${OUTDIR}/busybox"
 make distclean
 make defconfig
 make ARCH=${ARCH} CROSS_COMPILE=${CROSS_COMPILE}
@@ -99,7 +100,8 @@ sudo mknod -m 666 dev/null c 1 3
 sudo mknod -m 666 dev/console c 5 1
 
 # TODO: Clean and build the writer utility
-cd "$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+cd "$(realpath "$(dirname $0)")"
+echo "Clean and build the writer utility"
 make CROSS_COMPILE=aarch64-none-linux-gnu-
 
 # TODO: Copy the finder related scripts and executables to the /home directory
