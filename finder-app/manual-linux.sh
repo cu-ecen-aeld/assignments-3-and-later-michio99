@@ -98,8 +98,9 @@ cp $(find $compiler_dir -name libresolv.so.2) lib64
 cp $(find $compiler_dir -name libc.so.6) lib64
 
 # TODO: Make device nodes
-sudo mknod -m 666 dev/null c 1 3
-sudo mknod -m 666 dev/console c 5 1
+sudo mknod -m 666 /dev/null c 1 3
+sudo mknod -m 666 /dev/console c 5 1
+sudo mknod -m 666 /dev/tty c 5 0
 
 # TODO: Clean and build the writer utility
 cd $SCRIPT_PATH
@@ -111,8 +112,8 @@ make CROSS_COMPILE=aarch64-none-linux-gnu-
 # on the target rootfs
 cp writer "${OUTDIR}/rootfs/home"
 cp finder.sh "${OUTDIR}/rootfs/home"
-cp conf/username.txt "${OUTDIR}/rootfs/home"
-cp conf/assignment.txt "${OUTDIR}/rootfs/home"
+cp conf/username.txt "${OUTDIR}/rootfs/home/conf"
+cp conf/assignment.txt "${OUTDIR}/rootfs/home/conf"
 cp finder-test.sh "${OUTDIR}/rootfs/home"
 cp autorun-qemu.sh "${OUTDIR}/rootfs/home"
 
