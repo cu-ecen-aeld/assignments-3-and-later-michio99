@@ -100,7 +100,9 @@ sudo mknod -m 666 dev/null c 1 3
 sudo mknod -m 666 dev/console c 5 1
 
 # TODO: Clean and build the writer utility
-cd "$(realpath "$(dirname $0)")"
+absolute_path=$(dirname "$(readlink -f "$0")")
+cd $absolute_path
+pwd
 echo "Clean and build the writer utility"
 make CROSS_COMPILE=aarch64-none-linux-gnu-
 
