@@ -62,10 +62,11 @@ mkdir -p var/log
 cd "$OUTDIR"
 if [ ! -d "${OUTDIR}/busybox" ]
 then
-# git clone git://busybox.net/busybox.git
-    wget https://git.busybox.net/busybox/snapshot/busybox-1_33_1.tar.bz2
-    tar -xvjf busybox-1_33_1.tar.bz2
-    mv busybox-1_33_1 busybox
+git clone git://busybox.net/busybox.git
+    # sometime you cannot clone busybox
+    # wget https://git.busybox.net/busybox/snapshot/busybox-1_33_1.tar.bz2
+    # tar -xvjf busybox-1_33_1.tar.bz2
+    # mv busybox-1_33_1 busybox
     cd busybox
     git checkout ${BUSYBOX_VERSION}
     # TODO:  Configure busybox
