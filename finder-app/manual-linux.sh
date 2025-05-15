@@ -13,6 +13,8 @@ FINDER_APP_DIR=$(realpath $(dirname $0))
 ARCH=arm64
 CROSS_COMPILE=aarch64-none-linux-gnu-
 
+SCRIPT_PATH=$(dirname "$(readlink -f "$0")")
+
 if [ $# -lt 1 ]
 then
 	echo "Using default directory ${OUTDIR} for output"
@@ -100,8 +102,7 @@ sudo mknod -m 666 dev/null c 1 3
 sudo mknod -m 666 dev/console c 5 1
 
 # TODO: Clean and build the writer utility
-absolute_path=$(dirname "$(readlink -f "$0")")
-cd $absolute_path
+cd $SCRIPT_PATH
 pwd
 echo "Clean and build the writer utility"
 make CROSS_COMPILE=aarch64-none-linux-gnu-
