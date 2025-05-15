@@ -112,6 +112,7 @@ make CROSS_COMPILE=aarch64-none-linux-gnu-
 # on the target rootfs
 cp writer "${OUTDIR}/rootfs/home"
 cp finder.sh "${OUTDIR}/rootfs/home"
+mkdir -p "${OUTDIR}/rootfs/home/conf"
 cp conf/username.txt "${OUTDIR}/rootfs/home/conf"
 cp conf/assignment.txt "${OUTDIR}/rootfs/home/conf"
 cp finder-test.sh "${OUTDIR}/rootfs/home"
